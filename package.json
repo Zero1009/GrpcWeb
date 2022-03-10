@@ -1,0 +1,11 @@
+{
+  "name": "GrpcWeb",
+  "version": "1.0.0",
+  "main": "server.js",
+  "author": "theerakan",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
