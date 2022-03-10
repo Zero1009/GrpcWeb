@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const appCoutroller = require('../../controllers/storeFile');
+const appController = require('../../controllers/storeFile');
 
-router.get('/', appCoutroller.storeFile);
+
+router.post('/uploadFile', appController.uploadImg, appController.test );
 
 module.exports = router;
