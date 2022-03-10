@@ -11,10 +11,9 @@ const storage = multer.diskStorage({
     },
   });
   
-const uploadImg = multer({ storage: storage }).single('image');
+const upload = multer({ storage: storage }).single('image');
   
-const test = (req,res)=>{
-  console.log(storage.diskStorage)
+const responseUpload = (req,res)=>{
   res.send('Success')
 };
-module.exports = {  uploadImg ,test};
+module.exports = {  upload ,responseUpload};
