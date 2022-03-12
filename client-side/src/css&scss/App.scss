@@ -1,0 +1,26 @@
+@import './node_modules/bootstrap/scss/bootstrap';
+
+//Color
+$dark-color: #232921;
+
+//text
+
+// Card
+.card-header {
+  background-color: $dark-color;
+  color: white;
+}
+.card-header-sub {
+  background-color: gray;
+  color: white;
+}
+
+.fire-button {
+  position: absolute;
+}
+
+//sticky
+.is-sticky {
+  position: sticky;
+  left: 0;
+}
