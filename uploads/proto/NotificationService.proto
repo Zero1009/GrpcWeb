@@ -1,0 +1,87 @@
+syntax = "proto3";
+
+package notificationservice;
+
+option go_package = "cache";
+
+option java_multiple_files = true;
+option java_package = "com.appworks.co.th.notificationservice";
+option java_outer_classname = "NotificationProto";
+
+//############### cache-Message ###############
+message SmsRequest {
+  string mobile = 1;
+  string message = 2;
+  string language = 3;
+}
+
+message Error {
+  string code = 1;
+  string description = 2;
+}
+
+message Response {
+  bool status = 1;
+  string message = 2;
+  repeated Error errors = 3;
+}
+
+
+message Attachment {
+  bytes file = 1;
+  string type = 2;
+}
+
+
+message EmailRequest {
+  string subject = 1;
+  string body = 2;
+  string sender = 3;
+  repeated string receipts = 4;
+  repeated Attachment attachments = 5;
+}
+
+message SubscribeTopicRequest {
+  string registrationKey = 1;
+  string topic = 2;
+  string serviceProvider = 3;
+  string action = 4;
+}
+
+message PushNotificationRequest {
+  PushCondition sendToCondition = 1;
+  PushNotification notification = 2;
+  repeated PushData data = 3;
+}
+
+message PushCondition {
+  string priority = 1;
+  string topic = 2;
+  string serviceProvider= 3;
+}
+
+message PushNotification {
+  string title = 1;
+  string body = 2;
+  string clickActionAndroid = 3;
+  string clickActionIos = 4;
+  string clickActionWeb = 5;
+
+}
+
+message PushData {
+  string key = 1;
+  string value = 2;
+}
+
+service NotificationService {
+
+  rpc SendSms (SmsRequest) returns (Response) {}
+
+  rpc SendEmail (EmailRequest) returns (Response) {}
+
+  rpc SubscribeTopic(SubscribeTopicRequest) returns ( Response ) {}
+
+  rpc SendMobileNotification (PushNotificationRequest) returns (Response) {}
+}
+//###########################################
