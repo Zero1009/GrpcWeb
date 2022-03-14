@@ -1,19 +1,44 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
+const LocalStorage = require('node-localstorage').LocalStorage,
+  localStorage = new LocalStorage('./scratch');
+
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, './uploads/' + file.originalname.split('.')[1]);
+    if((file.originalname.split('.')[1] != 'xlsx' && file.originalname.split('.')[1] != 'proto')){
+      cb(null, './uploads/dummy');
+    }
+      cb(null, './uploads/' + file.originalname.split('.')[1]);
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalname);
+    if (file.originalname.split('.')[1] == 'xlsx' || file.originalname.split('.')[1] == 'proto') {
+      localStorage.setItem('status', JSON.stringify({
+        "code": "success",
+        "description": file.originalname
+      }));
+      cb(null, file.originalname);
+    } 
+    else {
+      localStorage.setItem('status', JSON.stringify({
+        "code": "failed",
+        "description": "worng file type"
+      }));
+      cb(null,'')
+    }
   },
 });
-
-const upload = multer({ storage: storage }).single('file');
-
+const upload =  multer({ storage: storage }).single('file')
+  
 const responseUpload = (req, res) => {
-  res.send('Success');
+  if(localStorage.getItem('status')==null){
+    localStorage.setItem('status', JSON.stringify({
+      "code": "failed",
+      "description": "file null"
+    }));
+  }
+  res.send(JSON.parse(localStorage.getItem('status')))
+  localStorage.clear();
 };
 module.exports = { upload, responseUpload };
