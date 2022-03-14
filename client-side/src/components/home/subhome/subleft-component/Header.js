@@ -9,7 +9,7 @@ const Header = () => {
     <>
       <CardHeader className='d-flex justify-content-between'>
         <p className='m-0'>Proto</p>
-        <input ref={inputRef} type='file' hidden />
+        <input ref={inputRef} type='file' accept='.proto' hidden />
         <Button
           onClick={handleClick}
           className='d-flex justify-content-center rounded-circle'

@@ -26,7 +26,10 @@ const Header = () => {
           isOpen={dDownOpen}
           onClick={() => setDDownOpen(!dDownOpen)}
         >
-          <DropdownToggle className='d-flex align-items-center'>
+          <DropdownToggle
+            style={{ height: '48px' }}
+            className='d-flex align-items-center px-2'
+          >
             <p className=' m-0'>Env</p>{' '}
             <FontAwesomeIcon className='ms-4' icon={faAngleDown} />
           </DropdownToggle>
