@@ -41,6 +41,8 @@ const responseUpload = (req, res) => {
     }));
   } if (JSON.parse(localStorage.getItem('status')).code == "success" && JSON.parse(localStorage.getItem('status')).description.split('.')[1]=="proto") {
     detail();
+  }if (JSON.parse(localStorage.getItem('status')).code == "success" && JSON.parse(localStorage.getItem('status')).description.split('.')[1]=="xlsx") {
+    detailxlsx();
   }
   res.send(JSON.parse(localStorage.getItem('status')))
   localStorage.clear();
@@ -82,3 +84,49 @@ const detail = () => {
 };
 
 module.exports = { upload, responseUpload, test };
+
+const detailxlsx = () => {
+  try{
+var XLSX = require("xlsx");
+const file = JSON.parse(localStorage.getItem('status')).description
+const path = './uploads/xlsx/' + file
+var workbook = XLSX. readFile(path);
+var sheet_name_list = workbook.SheetNames;
+
+console. log(sheet_name_list); // getting as Sheet1
+sheet_name_list.forEach(function (y) {
+  var worksheet = workbook.Sheets [y];
+  //getting the complete sheet
+ // console.log (worksheet);
+  var headers = {};
+ var data = [];
+  for (z in worksheet) {
+    if (z[0] == "!") continue;
+    //parse out the column, row, and value
+    var col = z.substring (0, 1);
+   // console. log(col);
+    var row = parseInt(z.substring (1));
+    // console. log (row);
+    var value = worksheet [z].v;
+   // console. log (value);
+                
+    //store header names
+    if (row == 1) {
+       headers [col] = value;
+      // storing the header names
+       continue;
+    }
+
+    if (!data[row]) data[row] = {};
+data[row][headers[col]] = value;
+}
+//drop those first two rows which are empty
+data.shift();
+data.shift();
+console. log(data);
+});
+    localStorage.setItem('status', JSON.stringify({ "status": "upload xlsx success"}));
+   }catch (err) {
+  console.error(err)
+   }
+};
