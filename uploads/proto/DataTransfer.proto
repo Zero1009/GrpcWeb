@@ -1,0 +1,92 @@
+syntax = "proto3";
+
+package datatransfer;
+
+option go_package = "datatransfer";
+
+option java_multiple_files = true;
+option java_package = "com.appworks.co.th.mflow";
+option java_outer_classname = "DataTransferProto";
+
+option csharp_namespace = "GrpcDataTransfer";
+
+
+message DataTransferRequest {
+  string client = 1;
+  string tranId = 2;
+  string tranSeq = 3;
+  string tranDatetime = 4;
+  string passageCode = 5;
+  string hqNum = 6;
+  string plazaNum = 7;
+  string laneNum = 8;
+  string agentCode = 9;
+  string entryHqNum = 10;
+  string entryPlazaNum = 11;
+  string entryLaneNum = 12;
+  string vehicleClass = 13;
+  string paymentType = 14;
+  double fee = 15;
+  double balance = 16;
+  string refPan = 17;
+  string refTag = 18;
+  string timeStamp = 19;
+  repeated Vehicle vehicles = 20;
+}
+
+message Vehicle {
+  string cameraCode = 1;
+  string cameraNo = 2;
+  string plate1 = 3;
+  string plate2 = 4;
+  double percentageCharacter = 5;
+  double percentageProvince = 6;
+  string plateNo1 = 7;
+  string plateNo2 = 8;
+  string plateNo3 = 9;
+  string plateNo4 = 10;
+  string plateNo5 = 11;
+  string plateColor = 12;
+  string province = 13;
+  string country = 14;
+  string vehicleType = 15;
+  string vehicleWheel = 16;
+  string vehicleBrand = 17;
+  repeated string vehicleColor = 18;
+  string platePicName = 19;
+  string platePicData = 20;
+  string bodyPicName = 21;
+  string bodyPicData = 22;
+  string overallPicName = 23;
+  string overallPicData = 24;
+  crossLanes crossLane = 25;
+  string timeStamp = 26;
+
+}
+
+message crossLanes {
+  string platePicName = 1;
+  string platePicData = 2;
+  string bodyPicName = 3;
+  string bodyPicData = 4;
+  string plate1 = 5;
+  string plate2 = 6;
+  string province = 7;
+}
+
+message DataTransferResponse {
+  bool status = 1 ;
+  string message = 2 ;
+  repeated Error errors = 3;
+}
+message Error {
+  string tranId = 1 ;
+  string field = 2 ;
+  string message = 3 ;
+}
+
+
+
+service DataTransferService{
+  rpc DataTransfer(stream DataTransferRequest) returns (DataTransferResponse){}
+}

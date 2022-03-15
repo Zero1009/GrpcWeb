@@ -7,6 +7,9 @@ import {
   DropdownToggle,
   Input,
   Button,
+  Modal,
+  ModalBody,
+  ModalHeader,
 } from 'reactstrap';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -16,8 +19,23 @@ import {
   faPlus,
 } from '@fortawesome/free-solid-svg-icons';
 const Header = () => {
+  const [ip, setIp] = useState(null);
   const [dDownOpen, setDDownOpen] = useState(false);
   const toggle = () => setDDownOpen(!dDownOpen);
+  const [modal, setModal] = useState(false);
+  const [envName, setEnvName] = useState('');
+  const [envItem, setEnvItem] = useState([]);
+
+  const handleModalEnv = () => {
+    setModal(!modal);
+  };
+  const toggleModal = () => {
+    setModal(!modal);
+  };
+  const addEnv = () => {
+    setEnvItem([...envItem, envName]);
+    setModal(!modal);
+  };
   return (
     <>
       <CardHeader className='card-header-sub d-flex'>
@@ -35,13 +53,30 @@ const Header = () => {
           </DropdownToggle>
           <DropdownMenu>
             <DropdownItem header>Select Enviroment</DropdownItem>
-            <DropdownItem className='dropdown-item-new'>
+            {envItem.length === 0 ? (
+              <></>
+            ) : (
+              <>
+                {envItem.map(m => (
+                  <DropdownItem>{m}</DropdownItem>
+                ))}
+                <DropdownItem>delete</DropdownItem>
+              </>
+            )}
+            <DropdownItem
+              className='dropdown-item-new'
+              onClick={handleModalEnv}
+            >
               <FontAwesomeIcon className='me-2' icon={faPlus} />
               Save New Enviroment
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>
-        <Input className='w-50' />
+        <Input
+          className='w-50'
+          value={ip}
+          onChange={e => setIp(e.target.value)}
+        />
         <div className=' bg-dark d-flex align-items-center rounded'>
           <FontAwesomeIcon className='ms-3' icon={faServer} />
           <p className='mb-0 mx-2 fs-6'>Server Address</p>
@@ -54,6 +89,26 @@ const Header = () => {
             <FontAwesomeIcon className='ms-1' icon={faPlay} />
           </Button>
         </div>
+        <Modal toggle={toggleModal} isOpen={modal}>
+          <ModalHeader>Set Enviroment Name</ModalHeader>
+          <ModalBody>
+            <Input onChange={e => setEnvName(e.target.value)} />
+            <div className='d-flex justify-content-end'>
+              <Button
+                onClick={addEnv}
+                className='me-2 mt-2 bg-primary border-primary'
+              >
+                Ok
+              </Button>
+              <Button
+                className='mt-2 btn-danger'
+                onClick={() => setModal(!modal)}
+              >
+                Cancel
+              </Button>
+            </div>
+          </ModalBody>
+        </Modal>
       </CardHeader>
     </>
   );
