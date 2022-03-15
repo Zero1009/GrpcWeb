@@ -1,0 +1,630 @@
+{
+    "package": "notificationservice",
+    "syntax": "proto3",
+    "root": {
+        "name": "",
+        "fullName": "",
+        "syntaxType": "ProtoRoot",
+        "nested": {
+            "notificationservice": {
+                "options": {
+                    "go_package": "cache",
+                    "java_multiple_files": true,
+                    "java_package": "com.appworks.co.th.notificationservice",
+                    "java_outer_classname": "NotificationProto"
+                },
+                "name": "notificationservice",
+                "fullName": ".notificationservice",
+                "syntaxType": "NamespaceDefinition",
+                "nested": {
+                    "SmsRequest": {
+                        "name": "SmsRequest",
+                        "fullName": ".notificationservice.SmsRequest",
+                        "comment": "############### cache-Message ###############",
+                        "syntaxType": "MessageDefinition",
+                        "fields": {
+                            "mobile": {
+                                "name": "mobile",
+                                "fullName": ".notificationservice.SmsRequest.mobile",
+                                "comment": null,
+                                "type": {
+                                    "value": "string",
+                                    "syntaxType": "BaseType"
+                                },
+                                "id": 1,
+                                "required": false,
+                                "optional": true,
+                                "repeated": false,
+                                "map": false
+                            },
+                            "message": {
+                                "name": "message",
+                                "fullName": ".notificationservice.SmsRequest.message",
+                                "comment": null,
+                                "type": {
+                                    "value": "string",
+                                    "syntaxType": "BaseType"
+                                },
+                                "id": 2,
+                                "required": false,
+                                "optional": true,
+                                "repeated": false,
+                                "map": false
+                            },
+                            "language": {
+                                "name": "language",
+                                "fullName": ".notificationservice.SmsRequest.language",
+                                "comment": null,
+                                "type": {
+                                    "value": "string",
+                                    "syntaxType": "BaseType"
+                                },
+                                "id": 3,
+                                "required": false,
+                                "optional": true,
+                                "repeated": false,
+                                "map": false
+                            }
+                        }
+                    },
+                    "Error": {
+                        "name": "Error",
+                        "fullName": ".notificationservice.Error",
+                        "comment": null,
+                        "syntaxType": "MessageDefinition",
+                        "fields": {
+                            "code": {
+                                "name": "code",
+                                "fullName": ".notificationservice.Error.code",
+                                "comment": null,
+                                "type": {
+                                    "value": "string",
+                                    "syntaxType": "BaseType"
+                                },
+                                "id": 1,
+                                "required": false,
+                                "optional": true,
+                                "repeated": false,
+                                "map": false
+                            },
+                            "description": {
+                                "name": "description",
+                                "fullName": ".notificationservice.Error.description",
+                                "comment": null,
+                                "type": {
+                                    "value": "string",
+                                    "syntaxType": "BaseType"
+                                },
+                                "id": 2,
+                                "required": false,
+                                "optional": true,
+                                "repeated": false,
+                                "map": false
+                            }
+                        }
+                    },
+                    "Response": {
+                        "name": "Response",
+                        "fullName": ".notificationservice.Response",
+                        "comment": null,
+                        "syntaxType": "MessageDefinition",
+                        "fields": {
+                            "status": {
+                                "name": "status",
+                                "fullName": ".notificationservice.Response.status",
+                                "comment": null,
+                                "type": {
+                                    "value": "bool",
+                                    "syntaxType": "BaseType"
+                                },
+                                "id": 1,
+                                "required": false,
+                                "optional": true,
+                                "repeated": false,
+                                "map": false
+                            },
+                            "message": {
+                                "name": "message",
+                                "fullName": ".notificationservice.Response.message",
+                                "comment": null,
+                                "type": {
+                                    "value": "string",
+                                    "syntaxType": "BaseType"
+                                },
+                                "id": 2,
+                                "required": false,
+                                "optional": true,
+                                "repeated": false,
+                                "map": false
+                            },
+                            "errors": {
+                                "name": "errors",
+                                "fullName": ".notificationservice.Response.errors",
+                                "comment": null,
+                                "type": {
+                                    "value": "Error",
+                                    "syntaxType": "Identifier",
+                                    "resolvedValue": ".notificationservice.Error"
+                                },
+                                "rule": "repeated",
+                                "id": 3,
+                                "required": false,
+                                "optional": true,
+                                "repeated": true,
+                                "map": false
+                            }
+                        }
+                    },
+                    "Attachment": {
+                        "name": "Attachment",
+                        "fullName": ".notificationservice.Attachment",
+                        "comment": null,
+                        "syntaxType": "MessageDefinition",
+                        "fields": {
+                            "file": {
+                                "name": "file",
+                                "fullName": ".notificationservice.Attachment.file",
+                                "comment": null,
+                                "type": {
+                                    "value": "bytes",
+                                    "syntaxType": "BaseType"
+                                },
+                                "id": 1,
+                                "required": false,
+                                "optional": true,
+                                "repeated": false,
+                                "map": false
+                            },
+                            "type": {
+                                "name": "type",
+                                "fullName": ".notificationservice.Attachment.type",
+                                "comment": null,
+                                "type": {
+                                    "value": "string",
+                                    "syntaxType": "BaseType"
+                                },
+                                "id": 2,
+                                "required": false,
+                                "optional": true,
+                                "repeated": false,
+                                "map": false
+                            }
+                        }
+                    },
+                    "EmailRequest": {
+                        "name": "EmailRequest",
+                        "fullName": ".notificationservice.EmailRequest",
+                        "comment": null,
+                        "syntaxType": "MessageDefinition",
+                        "fields": {
+                            "subject": {
+                                "name": "subject",
+                                "fullName": ".notificationservice.EmailRequest.subject",
+                                "comment": null,
+                                "type": {
+                                    "value": "string",
+                                    "syntaxType": "BaseType"
+                                },
+                                "id": 1,
+                                "required": false,
+                                "optional": true,
+                                "repeated": false,
+                                "map": false
+                            },
+                            "body": {
+                                "name": "body",
+                                "fullName": ".notificationservice.EmailRequest.body",
+                                "comment": null,
+                                "type": {
+                                    "value": "string",
+                                    "syntaxType": "BaseType"
+                                },
+                                "id": 2,
+                                "required": false,
+                                "optional": true,
+                                "repeated": false,
+                                "map": false
+                            },
+                            "sender": {
+                                "name": "sender",
+                                "fullName": ".notificationservice.EmailRequest.sender",
+                                "comment": null,
+                                "type": {
+                                    "value": "string",
+                                    "syntaxType": "BaseType"
+                                },
+                                "id": 3,
+                                "required": false,
+                                "optional": true,
+                                "repeated": false,
+                                "map": false
+                            },
+                            "receipts": {
+                                "name": "receipts",
+                                "fullName": ".notificationservice.EmailRequest.receipts",
+                                "comment": null,
+                                "type": {
+                                    "value": "string",
+                                    "syntaxType": "BaseType"
+                                },
+                                "rule": "repeated",
+                                "id": 4,
+                                "required": false,
+                                "optional": true,
+                                "repeated": true,
+                                "map": false
+                            },
+                            "attachments": {
+                                "name": "attachments",
+                                "fullName": ".notificationservice.EmailRequest.attachments",
+                                "comment": null,
+                                "type": {
+                                    "value": "Attachment",
+                                    "syntaxType": "Identifier",
+                                    "resolvedValue": ".notificationservice.Attachment"
+                                },
+                                "rule": "repeated",
+                                "id": 5,
+                                "required": false,
+                                "optional": true,
+                                "repeated": true,
+                                "map": false
+                            }
+                        }
+                    },
+                    "SubscribeTopicRequest": {
+                        "name": "SubscribeTopicRequest",
+                        "fullName": ".notificationservice.SubscribeTopicRequest",
+                        "comment": null,
+                        "syntaxType": "MessageDefinition",
+                        "fields": {
+                            "registrationKey": {
+                                "name": "registrationKey",
+                                "fullName": ".notificationservice.SubscribeTopicRequest.registrationKey",
+                                "comment": null,
+                                "type": {
+                                    "value": "string",
+                                    "syntaxType": "BaseType"
+                                },
+                                "id": 1,
+                                "required": false,
+                                "optional": true,
+                                "repeated": false,
+                                "map": false
+                            },
+                            "topic": {
+                                "name": "topic",
+                                "fullName": ".notificationservice.SubscribeTopicRequest.topic",
+                                "comment": null,
+                                "type": {
+                                    "value": "string",
+                                    "syntaxType": "BaseType"
+                                },
+                                "id": 2,
+                                "required": false,
+                                "optional": true,
+                                "repeated": false,
+                                "map": false
+                            },
+                            "serviceProvider": {
+                                "name": "serviceProvider",
+                                "fullName": ".notificationservice.SubscribeTopicRequest.serviceProvider",
+                                "comment": null,
+                                "type": {
+                                    "value": "string",
+                                    "syntaxType": "BaseType"
+                                },
+                                "id": 3,
+                                "required": false,
+                                "optional": true,
+                                "repeated": false,
+                                "map": false
+                            },
+                            "action": {
+                                "name": "action",
+                                "fullName": ".notificationservice.SubscribeTopicRequest.action",
+                                "comment": null,
+                                "type": {
+                                    "value": "string",
+                                    "syntaxType": "BaseType"
+                                },
+                                "id": 4,
+                                "required": false,
+                                "optional": true,
+                                "repeated": false,
+                                "map": false
+                            }
+                        }
+                    },
+                    "PushNotificationRequest": {
+                        "name": "PushNotificationRequest",
+                        "fullName": ".notificationservice.PushNotificationRequest",
+                        "comment": null,
+                        "syntaxType": "MessageDefinition",
+                        "fields": {
+                            "sendToCondition": {
+                                "name": "sendToCondition",
+                                "fullName": ".notificationservice.PushNotificationRequest.sendToCondition",
+                                "comment": null,
+                                "type": {
+                                    "value": "PushCondition",
+                                    "syntaxType": "Identifier",
+                                    "resolvedValue": ".notificationservice.PushCondition"
+                                },
+                                "id": 1,
+                                "required": false,
+                                "optional": true,
+                                "repeated": false,
+                                "map": false
+                            },
+                            "notification": {
+                                "name": "notification",
+                                "fullName": ".notificationservice.PushNotificationRequest.notification",
+                                "comment": null,
+                                "type": {
+                                    "value": "PushNotification",
+                                    "syntaxType": "Identifier",
+                                    "resolvedValue": ".notificationservice.PushNotification"
+                                },
+                                "id": 2,
+                                "required": false,
+                                "optional": true,
+                                "repeated": false,
+                                "map": false
+                            },
+                            "data": {
+                                "name": "data",
+                                "fullName": ".notificationservice.PushNotificationRequest.data",
+                                "comment": null,
+                                "type": {
+                                    "value": "PushData",
+                                    "syntaxType": "Identifier",
+                                    "resolvedValue": ".notificationservice.PushData"
+                                },
+                                "rule": "repeated",
+                                "id": 3,
+                                "required": false,
+                                "optional": true,
+                                "repeated": true,
+                                "map": false
+                            }
+                        }
+                    },
+                    "PushCondition": {
+                        "name": "PushCondition",
+                        "fullName": ".notificationservice.PushCondition",
+                        "comment": null,
+                        "syntaxType": "MessageDefinition",
+                        "fields": {
+                            "priority": {
+                                "name": "priority",
+                                "fullName": ".notificationservice.PushCondition.priority",
+                                "comment": null,
+                                "type": {
+                                    "value": "string",
+                                    "syntaxType": "BaseType"
+                                },
+                                "id": 1,
+                                "required": false,
+                                "optional": true,
+                                "repeated": false,
+                                "map": false
+                            },
+                            "topic": {
+                                "name": "topic",
+                                "fullName": ".notificationservice.PushCondition.topic",
+                                "comment": null,
+                                "type": {
+                                    "value": "string",
+                                    "syntaxType": "BaseType"
+                                },
+                                "id": 2,
+                                "required": false,
+                                "optional": true,
+                                "repeated": false,
+                                "map": false
+                            },
+                            "serviceProvider": {
+                                "name": "serviceProvider",
+                                "fullName": ".notificationservice.PushCondition.serviceProvider",
+                                "comment": null,
+                                "type": {
+                                    "value": "string",
+                                    "syntaxType": "BaseType"
+                                },
+                                "id": 3,
+                                "required": false,
+                                "optional": true,
+                                "repeated": false,
+                                "map": false
+                            }
+                        }
+                    },
+                    "PushNotification": {
+                        "name": "PushNotification",
+                        "fullName": ".notificationservice.PushNotification",
+                        "comment": null,
+                        "syntaxType": "MessageDefinition",
+                        "fields": {
+                            "title": {
+                                "name": "title",
+                                "fullName": ".notificationservice.PushNotification.title",
+                                "comment": null,
+                                "type": {
+                                    "value": "string",
+                                    "syntaxType": "BaseType"
+                                },
+                                "id": 1,
+                                "required": false,
+                                "optional": true,
+                                "repeated": false,
+                                "map": false
+                            },
+                            "body": {
+                                "name": "body",
+                                "fullName": ".notificationservice.PushNotification.body",
+                                "comment": null,
+                                "type": {
+                                    "value": "string",
+                                    "syntaxType": "BaseType"
+                                },
+                                "id": 2,
+                                "required": false,
+                                "optional": true,
+                                "repeated": false,
+                                "map": false
+                            },
+                            "clickActionAndroid": {
+                                "name": "clickActionAndroid",
+                                "fullName": ".notificationservice.PushNotification.clickActionAndroid",
+                                "comment": null,
+                                "type": {
+                                    "value": "string",
+                                    "syntaxType": "BaseType"
+                                },
+                                "id": 3,
+                                "required": false,
+                                "optional": true,
+                                "repeated": false,
+                                "map": false
+                            },
+                            "clickActionIos": {
+                                "name": "clickActionIos",
+                                "fullName": ".notificationservice.PushNotification.clickActionIos",
+                                "comment": null,
+                                "type": {
+                                    "value": "string",
+                                    "syntaxType": "BaseType"
+                                },
+                                "id": 4,
+                                "required": false,
+                                "optional": true,
+                                "repeated": false,
+                                "map": false
+                            },
+                            "clickActionWeb": {
+                                "name": "clickActionWeb",
+                                "fullName": ".notificationservice.PushNotification.clickActionWeb",
+                                "comment": null,
+                                "type": {
+                                    "value": "string",
+                                    "syntaxType": "BaseType"
+                                },
+                                "id": 5,
+                                "required": false,
+                                "optional": true,
+                                "repeated": false,
+                                "map": false
+                            }
+                        }
+                    },
+                    "PushData": {
+                        "name": "PushData",
+                        "fullName": ".notificationservice.PushData",
+                        "comment": null,
+                        "syntaxType": "MessageDefinition",
+                        "fields": {
+                            "key": {
+                                "name": "key",
+                                "fullName": ".notificationservice.PushData.key",
+                                "comment": null,
+                                "type": {
+                                    "value": "string",
+                                    "syntaxType": "BaseType"
+                                },
+                                "id": 1,
+                                "required": false,
+                                "optional": true,
+                                "repeated": false,
+                                "map": false
+                            },
+                            "value": {
+                                "name": "value",
+                                "fullName": ".notificationservice.PushData.value",
+                                "comment": null,
+                                "type": {
+                                    "value": "string",
+                                    "syntaxType": "BaseType"
+                                },
+                                "id": 2,
+                                "required": false,
+                                "optional": true,
+                                "repeated": false,
+                                "map": false
+                            }
+                        }
+                    },
+                    "NotificationService": {
+                        "name": "NotificationService",
+                        "fullName": ".notificationservice.NotificationService",
+                        "comment": null,
+                        "syntaxType": "ServiceDefinition",
+                        "methods": {
+                            "SendSms": {
+                                "name": "SendSms",
+                                "fullName": ".notificationservice.NotificationService.SendSms",
+                                "comment": null,
+                                "requestType": {
+                                    "value": "SmsRequest",
+                                    "syntaxType": "Identifier",
+                                    "resolvedValue": ".notificationservice.SmsRequest"
+                                },
+                                "responseType": {
+                                    "value": "Response",
+                                    "syntaxType": "Identifier",
+                                    "resolvedValue": ".notificationservice.Response"
+                                }
+                            },
+                            "SendEmail": {
+                                "name": "SendEmail",
+                                "fullName": ".notificationservice.NotificationService.SendEmail",
+                                "comment": null,
+                                "requestType": {
+                                    "value": "EmailRequest",
+                                    "syntaxType": "Identifier",
+                                    "resolvedValue": ".notificationservice.EmailRequest"
+                                },
+                                "responseType": {
+                                    "value": "Response",
+                                    "syntaxType": "Identifier",
+                                    "resolvedValue": ".notificationservice.Response"
+                                }
+                            },
+                            "SubscribeTopic": {
+                                "name": "SubscribeTopic",
+                                "fullName": ".notificationservice.NotificationService.SubscribeTopic",
+                                "comment": null,
+                                "requestType": {
+                                    "value": "SubscribeTopicRequest",
+                                    "syntaxType": "Identifier",
+                                    "resolvedValue": ".notificationservice.SubscribeTopicRequest"
+                                },
+                                "responseType": {
+                                    "value": "Response",
+                                    "syntaxType": "Identifier",
+                                    "resolvedValue": ".notificationservice.Response"
+                                }
+                            },
+                            "SendMobileNotification": {
+                                "name": "SendMobileNotification",
+                                "fullName": ".notificationservice.NotificationService.SendMobileNotification",
+                                "comment": null,
+                                "requestType": {
+                                    "value": "PushNotificationRequest",
+                                    "syntaxType": "Identifier",
+                                    "resolvedValue": ".notificationservice.PushNotificationRequest"
+                                },
+                                "responseType": {
+                                    "value": "Response",
+                                    "syntaxType": "Identifier",
+                                    "resolvedValue": ".notificationservice.Response"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "syntaxType": "ProtoDocument"
+}
