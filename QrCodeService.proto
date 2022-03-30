@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package qrcodeservice;
+
+option go_package = "qrcodeservice";
+
+option java_multiple_files = true;
+option java_package = "com.appworks.co.th.qrcodeservice";
+option java_outer_classname = "QrCodeProto";
+
+//############### messageservice-Message ###############
+message QrCodeRequest {
+    string data = 1;
+    uint32 size = 2;
+}
+
+message QrCodeResponse {
+    bytes qr = 1;
+}
+
+service QrCodeService {
+    //    rpc SendFile (stream QrCodeRequest) returns (QrCodeResponse) {}
+    rpc GetQrCode (QrCodeRequest) returns (QrCodeResponse) {
+    }
+}
