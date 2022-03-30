@@ -8,7 +8,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const Body = ({ protoRes, fileName, setFileName }) => {
+const Body = ({ protoRes, fileName, setFileName, setMessage }) => {
   const [collapse, setCollapse] = useState(false);
   const [collapsePkg, setcollapsePkg] = useState(false);
 
@@ -21,12 +21,12 @@ const Body = ({ protoRes, fileName, setFileName }) => {
     }
     setCollapse(!collapse);
   };
-  const generateProtoObj = e => {
-    alert(e.target.id);
+  const generateProtoObj = message => {
+    setMessage(message);
   };
+
   return (
     <>
-      {console.log(protoRes)}
       <CardBody className='border d-flex justify-content-between p-0'>
         <div className='d-flex justify-content-center align-items-center'>
           <Button
@@ -99,13 +99,13 @@ const Body = ({ protoRes, fileName, setFileName }) => {
             </Button>
 
             <Collapse isOpen={collapsePkg}>
-              {protoRes.methods.map(method => (
+              {protoRes.methods.methods.map(method => (
                 <div className='p-0 m-0 d-flex flex-column'>
                   <div>
                     <Button
                       key={method.methodsName}
                       id={method.methodsName}
-                      onClick={generateProtoObj}
+                      onClick={() => generateProtoObj(method.messages)}
                       className='mt-2 ms-2 w-75 btn-danger'
                     >
                       {method.methodsName}

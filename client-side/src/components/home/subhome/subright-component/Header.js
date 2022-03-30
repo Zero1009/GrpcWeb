@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   CardHeader,
   Dropdown,
@@ -18,14 +18,17 @@ import {
   faAngleDown,
   faPlus,
 } from '@fortawesome/free-solid-svg-icons';
-const Header = () => {
+const Header = ({ reqMessage }) => {
   const [ip, setIp] = useState(null);
   const [dDownOpen, setDDownOpen] = useState(false);
   const toggle = () => setDDownOpen(!dDownOpen);
   const [modal, setModal] = useState(false);
   const [envName, setEnvName] = useState('');
   const [envItem, setEnvItem] = useState([]);
-
+  const [message, setMessage] = useState(null);
+  useEffect(() => {
+    setMessage(reqMessage);
+  }, [reqMessage]);
   const handleModalEnv = () => {
     setModal(!modal);
   };
@@ -35,6 +38,10 @@ const Header = () => {
   const addEnv = () => {
     setEnvItem([...envItem, envName]);
     setModal(!modal);
+  };
+
+  const handleClick = () => {
+    alert(JSON.stringify(message));
   };
   return (
     <>
@@ -85,6 +92,7 @@ const Header = () => {
           <Button
             style={{ width: '46px', height: '46px', background: '#40ff00' }}
             className=' d-flex justify-content-center align-items-center  rounded-circle'
+            onClick={handleClick}
           >
             <FontAwesomeIcon className='ms-1' icon={faPlay} />
           </Button>

@@ -1,27 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import 'jsoneditor-react/es/editor.min.css';
-import { JsonEditor as Editor } from 'jsoneditor-react';
-import 'jsoneditor-react/es/editor.min.css';
-import { exapmleData } from './Data';
+import JSONInput from 'react-json-editor-ajrm';
+import locale from 'react-json-editor-ajrm/locale/en';
+const EditorJson = ({ message, setReqMessage }) => {
+  const [reqMes, setReqMes] = useState();
 
-const EditorJson = ({ parentCallback }) => {
-  const a = exapmleData;
-  const [body, setBody] = useState(null);
+  useEffect(() => {
+    setReqMes(message);
+  }, [message]);
+  useEffect(() => {
+    setReqMessage(reqMes);
+  }, [reqMes]);
+
+  const handleChange = e => {
+    setReqMes(e.json);
+    console.log(e.json);
+  };
   return (
     <>
-      {a === null ? (
-        <>Empty</>
+      {message ? (
+        <JSONInput
+          onChange={handleChange}
+          id={message.type}
+          theme='dark'
+          placeholder={reqMes}
+          locale={locale}
+          height='550px'
+        />
       ) : (
-        <>
-          {' '}
-          <Editor
-            onChange={async e => {
-              setBody(e);
-            }}
-            value={a}
-          />
-          {parentCallback(body)}
-        </>
+        <>Hello</>
       )}
     </>
   );
