@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
 import Body from './subright-component/Body';
 import Header from './subright-component/Header';
-const SubRight = () => {
+const SubRight = ({ message }) => {
+  const [reqMessage, setReqMessage] = useState(null);
   return (
     <>
       <Nav className='ms-3' tabs>
@@ -13,8 +14,8 @@ const SubRight = () => {
       <TabContent activeTab='1'>
         <TabPane tabId='1'>
           <Card>
-            <Header />
-            <Body />
+            <Header reqMessage={reqMessage} />
+            <Body message={message} setReqMessage={setReqMessage} />
           </Card>
         </TabPane>
       </TabContent>

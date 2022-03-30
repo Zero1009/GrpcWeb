@@ -17,6 +17,7 @@
     "node-localstorage": "^2.2.1",
     "proto-parser": "0.0.8",
     "protobufjs": "^6.11.2",
+    "react-json-editor-ajrm": "^2.5.13",
     "xlsx": "^0.18.3"
   },
   "devDependencies": {
