@@ -40,19 +40,31 @@ const callGrpc = (grpcMessage, packName, serviceName, methodName, target, fileNa
             objects: true,
             arrays: true
         });
+        // console.log(packageDefinition[packName+'.'+serviceName][methodName].requestStream)
         const proto = grpc.loadPackageDefinition(packageDefinition)[packageName];
         const grpc_client = new proto[serName](targetIP, grpc.credentials.createInsecure());
-        console.log('Request Data: ', grpcMessage);
-        const call = grpc_client[methName]((err, response) => {
-            if (err) {
-                resolve(err.message);
-            }
-            resolve(response.message);
+        // console.log('Request Data: ', grpcMessage);
+        if(packageDefinition[packName+'.'+serviceName][methodName].requestStream){
+            const call = grpc_client[methName]((err, response) => {
+                if (err) {
+                    resolve(err.message);
+                }
+                    resolve(response.message);
 
-        });
-        call.write(grpcMessage);
-        call.end();
-    })
+            });
+            call.write(grpcMessage);
+            call.end();
+        }else{
+            grpc_client[methName](grpcMessage,
+                function (err, response) {
+                    if (err) {
+                        resolve(err.message);
+                    }
+                        resolve(response.message);
+                }
+            )
+        }
+    });
 }
 
 // function sleep(ms) {
