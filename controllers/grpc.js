@@ -62,7 +62,7 @@ const callGrpc = (
       targetIP,
       grpc.credentials.createInsecure()
     );
-    // console.log('Request Data: ', grpcMessage);
+    console.log('Request Data: ', typeof grpcMessage);
     if (
       packageDefinition[packName + '.' + serviceName][methodName].requestStream
     ) {

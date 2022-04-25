@@ -1,7 +1,8 @@
-import React, { useRef, useState, useCallback } from 'react';
+import React, { useRef, useState, useCallback, useEffect } from 'react';
 import { Row, Col, CardBody, Button } from 'reactstrap';
 import EditorJson from './editor/Editor';
-const Body = ({ message, setReqMessage }) => {
+const Body = ({ message, setReqMessage, response }) => {
+  
   return (
     <>
       <Row
@@ -18,7 +19,7 @@ const Body = ({ message, setReqMessage }) => {
         <Col className='ps-0 pb-4'>
           Response
           <CardBody className='border h-100'>
-            <pre>{JSON.stringify(message)}</pre>
+            <pre>{response === null ? '' : response}</pre>
           </CardBody>
         </Col>
       </Row>

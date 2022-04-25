@@ -19,7 +19,7 @@ import {
   faAngleDown,
   faPlus,
 } from '@fortawesome/free-solid-svg-icons';
-const Header = ({ reqMessage, requestGrpc }) => {
+const Header = ({ reqMessage, requestGrpc, setResponse }) => {
   const [ip, setIp] = useState(null);
   const [dDownOpen, setDDownOpen] = useState(false);
   const toggle = () => setDDownOpen(!dDownOpen);
@@ -50,7 +50,7 @@ const Header = ({ reqMessage, requestGrpc }) => {
     body.target = ip;
     body.messages.push(JSON.parse(message));
     const res = await callGrpc(body);
-    console.log(res);
+    setResponse(res);
   };
   return (
     <>
