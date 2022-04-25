@@ -8,13 +8,9 @@ const EditorJson = ({ message, setReqMessage }) => {
   useEffect(() => {
     setReqMes(message);
   }, [message]);
-  useEffect(() => {
-    setReqMessage(reqMes);
-  }, [reqMes]);
 
   const handleChange = e => {
-    setReqMes(e.json);
-    console.log(e.json);
+    setReqMessage(e.json);
   };
   return (
     <>

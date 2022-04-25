@@ -13,6 +13,10 @@ const Header = ({ setProtoRes, setFileName }) => {
     const formData = new FormData();
     formData.append('file', e.target.files[0]);
     const res = await sendFile(formData);
+    localStorage.setItem(
+      'fileName',
+      formData.get('file').name.replace('.proto', '')
+    );
     setFileName(formData.get('file').name);
     setProtoRes(res);
   };

@@ -21,7 +21,8 @@ const Body = ({ protoRes, fileName, setFileName, setMessage }) => {
     }
     setCollapse(!collapse);
   };
-  const generateProtoObj = message => {
+  const generateProtoObj = (message, methodName) => {
+    localStorage.setItem('methodName', methodName);
     setMessage(message);
   };
 
@@ -105,7 +106,9 @@ const Body = ({ protoRes, fileName, setFileName, setMessage }) => {
                     <Button
                       key={method.methodsName}
                       id={method.methodsName}
-                      onClick={() => generateProtoObj(method.messages)}
+                      onClick={() =>
+                        generateProtoObj(method.messages, method.methodsName)
+                      }
                       className='mt-2 ms-2 w-75 btn-danger'
                     >
                       {method.methodsName}

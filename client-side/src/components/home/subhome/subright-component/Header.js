@@ -11,6 +11,7 @@ import {
   ModalBody,
   ModalHeader,
 } from 'reactstrap';
+import { callGrpc } from '../../../../common/api';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -18,7 +19,7 @@ import {
   faAngleDown,
   faPlus,
 } from '@fortawesome/free-solid-svg-icons';
-const Header = ({ reqMessage }) => {
+const Header = ({ reqMessage, requestGrpc }) => {
   const [ip, setIp] = useState(null);
   const [dDownOpen, setDDownOpen] = useState(false);
   const toggle = () => setDDownOpen(!dDownOpen);
@@ -40,8 +41,16 @@ const Header = ({ reqMessage }) => {
     setModal(!modal);
   };
 
-  const handleClick = () => {
-    alert(JSON.stringify(message));
+  const handleClick = async () => {
+    let body = { messages: [] };
+    body.methodName = localStorage.getItem('methodName');
+    body.fileName = localStorage.getItem('fileName');
+    body.packageName = requestGrpc.packageName;
+    body.serviceName = requestGrpc.serviceName;
+    body.target = ip;
+    body.messages.push(JSON.parse(message));
+    const res = await callGrpc(body);
+    console.log(res);
   };
   return (
     <>

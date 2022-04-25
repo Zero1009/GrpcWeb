@@ -76,7 +76,7 @@ message PushData {
 
 service NotificationService {
 
-  rpc SendSms (SmsRequest) returns (Response) {}
+  rpc SendSms (stream SmsRequest) returns (Response) {}
 
   rpc SendEmail (EmailRequest) returns (Response) {}
 

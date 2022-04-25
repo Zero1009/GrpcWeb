@@ -7,5 +7,10 @@ export const sendFile = async file => {
   return res.data;
 };
 
-
-
+export const callGrpc = async body => {
+  const config = {
+    'Content-Type': 'application/json',
+  };
+  const res = await axios.post('grpc', body, config);
+  return res.data;
+};
