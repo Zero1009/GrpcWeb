@@ -4,6 +4,7 @@ const multer = require('multer');
 const fs = require('fs');
 const parser = require('proto-parser');
 const { json } = require('express/lib/response');
+const res = require('express/lib/response');
 
 const LocalStorage = require('node-localstorage').LocalStorage,
   localStorage = new LocalStorage('./scratch');
@@ -66,6 +67,12 @@ const responseUpload = (req, res) => {
       'proto'
   ) {
     detailProto(); // หา detail ของไฟล์ proto ที่ upload
+  } if (
+    JSON.parse(localStorage.getItem('status')).code == 'success' &&
+    JSON.parse(localStorage.getItem('status')).description.split('.')[1] ==
+      'xlsx'
+  ) {
+    detailXlsx();// หา detail ของไฟล์ xlsx ที่ upload
   }
   res.send(JSON.parse(localStorage.getItem('status')));
   localStorage.clear();
@@ -202,6 +209,66 @@ const detailProto = () => {
         methods: { methods },
       })
     );
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+const detailXlsx = () => {
+  try{
+    const file = JSON.parse(localStorage.getItem('status')).description;
+    const path = './uploads/xlsx/' + file;
+    var XLSX = require("xlsx");
+    var workbook = XLSX.readFile(path);
+    var sheet_name_list = workbook.SheetNames;
+
+
+sheet_name_list.forEach(function (y) {
+  var worksheet = workbook.Sheets[y];
+  //getting the complete sheet
+  // console.log(worksheet);
+
+  var headers = {};
+  var data = [];
+  for (z in worksheet) {
+    if (z[0] === "!") continue;
+    //parse out the column, row, and value
+    var col = z.substring(0, 1);
+    // console.log(col);
+
+    var row = parseInt(z.substring(1));
+    // console.log(row);
+
+    var value = worksheet[z].v;
+    // console.log(value);
+
+    //store header names
+    if (row == 1) {
+      headers[col] = value;
+      // storing the header names
+      continue;
+    }
+
+    if (!data[row]) data[row] = {};
+    data[row][headers[col]] = value;
+  }
+  //drop those first two rows which are empty
+  data.shift();
+  data.shift();
+ 
+  const response=[]
+  data.map(d=>{
+    response.push(JSON.parse(d.massage))
+  }) 
+   //set response
+   localStorage.setItem(
+    'status',
+    JSON.stringify({
+      status: 'success',
+      messages: (response)
+    })
+  );
+});
   } catch (err) {
     console.error(err);
   }
