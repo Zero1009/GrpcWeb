@@ -75,7 +75,7 @@ const responseUpload = (req, res) => {
     detailXlsx();// หา detail ของไฟล์ xlsx ที่ upload
   }
   res.send(JSON.parse(localStorage.getItem('status')));
-  localStorage.clear();
+  localStorage.removeItem('status');
 };
 
 const messageProto = (protoDocument, packageName, requestName, messageName) => {
@@ -258,7 +258,7 @@ sheet_name_list.forEach(function (y) {
  
   const response=[]
   data.map(d=>{
-    response.push(JSON.parse(d.massage))
+    response.push(JSON.parse(d.message))
   }) 
    //set response
    localStorage.setItem(
