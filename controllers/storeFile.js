@@ -257,15 +257,18 @@ sheet_name_list.forEach(function (y) {
   data.shift();
  
   const response=[]
+  const responsetxt=[]
   data.map(d=>{
     response.push(JSON.parse(d.message))
+    responsetxt.push(`"${JSON.parse(d.message)}"`)
   }) 
    //set response
    localStorage.setItem(
     'status',
     JSON.stringify({
       status: 'success',
-      messages: (response)
+      messages: (response),
+      messagestxt: (responsetxt)
     })
   );
 });
