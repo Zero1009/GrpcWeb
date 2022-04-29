@@ -2,16 +2,14 @@ import React, { useState, useEffect, useRef } from 'react';
 import 'jsoneditor-react/es/editor.min.css';
 import JSONInput from 'react-json-editor-ajrm';
 import locale from 'react-json-editor-ajrm/locale/en';
-const EditorJson = ({ message, setReqMessage }) => {
+const EditorJson = ({ message }) => {
   const [reqMes, setReqMes] = useState();
 
   useEffect(() => {
     setReqMes(message);
   }, [message]);
 
-  const handleChange = e => {
-    setReqMessage(e.json);
-  };
+  const handleChange = e => {};
   return (
     <>
       {message ? (
@@ -24,7 +22,7 @@ const EditorJson = ({ message, setReqMessage }) => {
           height='550px'
         />
       ) : (
-        <>Hello</>
+        <p className='text-secondary'>Empty</p>
       )}
     </>
   );

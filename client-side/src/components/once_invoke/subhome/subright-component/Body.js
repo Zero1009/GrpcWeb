@@ -2,7 +2,6 @@ import React, { useRef, useState, useCallback, useEffect } from 'react';
 import { Row, Col, CardBody, Button } from 'reactstrap';
 import EditorJson from './editor/Editor';
 const Body = ({ message, setReqMessage, response }) => {
-  
   return (
     <>
       <Row
@@ -10,8 +9,8 @@ const Body = ({ message, setReqMessage, response }) => {
         style={{ height: '100vh' }}
       >
         <Col className='pe-0 pb-0'>
+          Editor
           <CardBody className='border p-0 h-100 d-flex flex-column'>
-            <p>Editor</p>
             <EditorJson message={message} setReqMessage={setReqMessage} />
           </CardBody>
         </Col>
