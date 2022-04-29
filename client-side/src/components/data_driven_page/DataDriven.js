@@ -2,9 +2,19 @@ import React from 'react';
 
 const DataDriven = () => {
   return (
-    <div className='d-flex justify-content-center  '>
-      Ohh This Page is Not Available
-    </div>
+    <Container>
+      <Row>
+        <Col>
+          <Card>
+            <CardBody>Upload</CardBody>
+            <CardBody>Upload</CardBody>
+          </Card>
+        </Col>
+        <Col>
+          <Row>2</Row>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
