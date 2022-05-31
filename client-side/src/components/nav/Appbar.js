@@ -23,7 +23,7 @@ const Appbar = () => {
             ref={linkRefBack}
             to='/'
           >
-            SOMPAIDrpc
+            PAIDrpc
           </Link>
         </NavbarBrand>
         <div className='d-flex'>

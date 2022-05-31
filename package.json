@@ -6,7 +6,8 @@
     "start": "node index",
     "server": "nodemon server",
     "client": "npm start --prefix client-side",
-    "dev": "concurrently \"npm run server\" \"npm run client\" "
+    "dev": "concurrently \"npm run server\" \"npm run client\" ",
+    "prod": "concurrently \"npm run server\" \"npm run client\" "
   },
   "author": "theerakan",
   "license": "MIT",
